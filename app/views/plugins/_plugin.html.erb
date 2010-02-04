@@ -1,0 +1,18 @@
+<li>
+    <h3><%=link_to h(plugin.name), plugin %></h3>
+    <%= image_tag plugin.screenshot.url(:thumb) %>
+    <dl>
+        <dt>Author</dt>
+        <dd><%=mail_to plugin.user.email %></dd>
+
+        <dt>Homepage</dt>
+        <dd><%=link_to plugin.homepage %></dd>
+    </dl>
+    <p><%=h plugin.description %></p>
+
+<% permitted_to? :create, :plugins do %>
+    <%= link_to 'Show', plugin %>
+    <%= link_to 'Edit', edit_plugin_path(plugin) %>
+    <%= link_to 'Destroy', plugin, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+</li>

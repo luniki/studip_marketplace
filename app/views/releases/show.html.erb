@@ -1,0 +1,23 @@
+<p>
+  <b>Plugin:</b>
+  <%=h @release.plugin_id %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%=h @release.version %>
+</p>
+
+<p>
+  <b>Min:</b>
+  <%=h @release.min %>
+</p>
+
+<p>
+  <b>Max:</b>
+  <%=h @release.max %>
+</p>
+
+
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>

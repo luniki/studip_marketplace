@@ -1,0 +1,13 @@
+<h1>Listing plugins</h1>
+
+<ul>
+<%= render :partial => "plugin", :collection => @plugins %>
+</ul>
+
+<br />
+<% permitted_to? :create, :plugins do %>
+  <%= link_to 'New plugin', new_plugin_path %>
+<% end %>
+
+<%= debug(Authorization::Engine.instance.roles_for current_user) %>
+

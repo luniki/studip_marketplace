@@ -18,9 +18,9 @@ Rails::Initializer.run do |config|
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
   # Specify gems that this application depends on.
-  config.gem 'RedCloth',
-             :lib => 'redcloth',
-             :version => '>= 4.2.2'
+#  config.gem 'RedCloth',
+#             :lib => 'redcloth',
+#             :version => '>= 4.2.2'
   config.gem 'will_paginate',
              :version => '~> 2.3.12'
   config.gem 'clearance',
@@ -31,7 +31,8 @@ Rails::Initializer.run do |config|
              :version => '>= 2.3.1.1'
   config.gem 'rack',
              :version => '>= 1.0.1'
-  
+  config.gem 'declarative_authorization', 
+             :source => 'http://gemcutter.org' 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named

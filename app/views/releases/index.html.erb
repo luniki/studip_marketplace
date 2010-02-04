@@ -1,0 +1,26 @@
+<h1>Listing releases</h1>
+
+<table>
+  <tr>
+    <th>Plugin</th>
+    <th>Version</th>
+    <th>Min</th>
+    <th>Max</th>
+  </tr>
+
+<% @releases.each do |release| %>
+  <tr>
+    <td><%=h release.plugin_id %></td>
+    <td><%=h release.version %></td>
+    <td><%=h release.min %></td>
+    <td><%=h release.max %></td>
+    <td><%= link_to 'Show', release %></td>
+    <td><%= link_to 'Edit', edit_release_path(release) %></td>
+    <td><%= link_to 'Destroy', release, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New release', new_release_path %>

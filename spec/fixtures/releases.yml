@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plugin_id: 1
+  version: 1
+  min: MyString
+  max: MyString
+
+two:
+  plugin_id: 1
+  version: 1
+  min: MyString
+  max: MyString

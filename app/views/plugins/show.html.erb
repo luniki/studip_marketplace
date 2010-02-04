@@ -1,0 +1,40 @@
+<p>
+  <b>User:</b>
+  <%=h @plugin.user.email %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @plugin.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @plugin.description %>
+</p>
+
+<p>
+  <b>Homepage:</b>
+  <%=h @plugin.homepage %>
+</p>
+
+<%= image_tag @plugin.screenshot.url(:thumb) %>
+
+
+<%= link_to 'New release', new_plugin_release_path(@plugin) %>
+
+<ul id="releases">
+  <% @plugin.releases.each do |release| -%>
+    <% content_tag_for(:li, release) do %>
+      <%= link_to h(release.version), release %>
+    <% end %>
+  <% end %>
+</ul>
+
+
+
+
+
+
+<%= link_to 'Edit', edit_plugin_path(@plugin) %> |
+<%= link_to 'Back', plugins_path %>

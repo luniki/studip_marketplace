@@ -5,8 +5,13 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>studip_marketplace</title>
     <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
+    <%= stylesheet_link_tag "formtastic" %>
+    <%= stylesheet_link_tag "formtastic_changes" %>
   </head>
   <body class="<%= body_class %>">
+    <%= link_to "Register", sign_up_path unless current_user %>
+    <%= link_to "Login", sign_in_path unless current_user %>
+    <%= link_to "Logout", sign_out_path if current_user %>
     <%= render :partial => 'shared/flashes' -%>
     <%= yield %>
     <%= render :partial => 'shared/javascript' %>

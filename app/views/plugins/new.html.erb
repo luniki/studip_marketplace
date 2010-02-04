@@ -1,0 +1,16 @@
+<h2>New plugin</h2>
+
+<% semantic_form_for @plugin do |form| %>
+  <%= form.error_messages %>
+  <% form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :description %>
+    <%= form.input :homepage %>
+    <%= form.input :screenshot %>
+  <% end %>
+  <% form.buttons do %>
+    <%= form.commit_button "Create" %>
+  <% end %>
+<% end %>
+<%= link_to 'Back', plugins_path %>
+

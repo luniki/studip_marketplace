@@ -1,0 +1,18 @@
+<h2>Editing plugin</h2>
+
+<% semantic_form_for @plugin, :html => {:multipart => true} do |form| %>
+  <%= form.error_messages %>
+  <% form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :description %>
+    <%= form.input :homepage %>
+    <%= form.input :screenshot %>
+  <% end %>
+  <% form.buttons do %>
+    <%= form.commit_button "Update" %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Show', @plugin %> |
+<%= link_to 'Back', plugins_path %>
+

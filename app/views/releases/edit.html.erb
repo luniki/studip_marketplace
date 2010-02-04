@@ -1,0 +1,28 @@
+<h1>Editing release</h1>
+
+<% form_for(@release) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :plugin_id %><br />
+    <%= f.text_field :plugin_id %>
+  </p>
+  <p>
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </p>
+  <p>
+    <%= f.label :min %><br />
+    <%= f.text_field :min %>
+  </p>
+  <p>
+    <%= f.label :max %><br />
+    <%= f.text_field :max %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @release %> |
+<%= link_to 'Back', plugin_releases_path @release.plugin %>
