@@ -1,27 +1,17 @@
 <h1>New release</h1>
 
-<% form_for([@plugin, @release]) do |f| %>
-  <%= f.error_messages %>
+<% semantic_form_for([@plugin, @release]) do |form| %>
+  <%= form.error_messages %>
 
-  <p>
-    <%= f.label :plugin_id %><br />
-    <%= f.text_field :plugin_id %>
-  </p>
-  <p>
-    <%= f.label :version %><br />
-    <%= f.text_field :version %>
-  </p>
-  <p>
-    <%= f.label :min %><br />
-    <%= f.text_field :min %>
-  </p>
-  <p>
-    <%= f.label :max %><br />
-    <%= f.text_field :max %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+  <% form.inputs do %>
+    <%= form.input :package %>
+  <% end %>
+  <% form.buttons do %>
+    <%= form.commit_button "Create" %>
+  <% end %>
 <% end %>
+
+<%= debug @plugin %>
+<%= debug @release %>
 
 <%= link_to 'Back', plugin_releases_path(@plugin) %>

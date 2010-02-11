@@ -7,7 +7,7 @@ class Release < ActiveRecord::Base
                     :path => ":rails_root/public/paperclip/:attachment/:id_:style.:extension"
 
   # deny mass update
-  attr_accessible
+  attr_accessible :package
 
 
 end

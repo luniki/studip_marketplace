@@ -1,5 +1,5 @@
 class Plugin < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user # TODO should be called owner instead
   has_many :releases
 
   has_attached_file :screenshot,

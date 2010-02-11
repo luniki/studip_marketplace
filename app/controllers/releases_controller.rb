@@ -1,6 +1,8 @@
 class ReleasesController < ApplicationController
 
-  before_filter :authenticate, :except => [:index, :show]
+  filter_resource_access :nested_in => :plugins
+
+  before_filter :populate_plugin
 
   # GET /releases
   # GET /releases.xml
@@ -27,8 +29,7 @@ class ReleasesController < ApplicationController
   # GET /releases/new
   # GET /releases/new.xml
   def new
-    @release = Release.new
-@plugin = Plugin.find(params[:plugin_id])
+    @release = @plugin.releases.build
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @release }
@@ -84,5 +85,9 @@ class ReleasesController < ApplicationController
       format.html { redirect_to(releases_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def populate_plugin
+    @plugin = Plugin.find(params[:plugin_id])
   end
 end
