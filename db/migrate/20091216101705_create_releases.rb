@@ -2,7 +2,7 @@ class CreateReleases < ActiveRecord::Migration
   def self.up
     create_table :releases do |t|
       t.integer :plugin_id
-      t.integer :version
+      t.string :version
       t.string :min
       t.string :max
 

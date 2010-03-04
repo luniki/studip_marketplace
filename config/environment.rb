@@ -31,13 +31,14 @@ Rails::Initializer.run do |config|
              :version => '>= 2.3.1.1'
   config.gem 'rack',
              :version => '>= 1.0.1'
-  config.gem 'declarative_authorization', 
-             :source => 'http://gemcutter.org' 
-  # Only load the plugins named here, in the order given. By default, all plugins 
+  config.gem 'declarative_authorization',
+             :source => 'http://gemcutter.org'
+  config.gem 'rubyzip', :lib => 'zip/zipfilesystem'
+  # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-  
+
   # Add the vendor/gems/*/lib directories to the LOAD_PATH
   config.load_paths += Dir.glob(File.join(RAILS_ROOT, 'vendor', 'gems', '*', 'lib'))
 
