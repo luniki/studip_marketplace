@@ -4,16 +4,16 @@
   <tr>
     <th>Plugin</th>
     <th>Version</th>
-    <th>Min</th>
-    <th>Max</th>
+    <th>Stud.IP Min</th>
+    <th>Stud.IP Max</th>
   </tr>
 
 <% @releases.each do |release| %>
   <tr>
     <td><%=h release.plugin_id %></td>
     <td><%=h release.version %></td>
-    <td><%=h release.min %></td>
-    <td><%=h release.max %></td>
+    <td><%=h release.studipMinVersion %></td>
+    <td><%=h release.studipMaxVersion %></td>
     <td><%= link_to 'Show', release %></td>
     <td><%= link_to 'Edit', edit_release_path(release) %></td>
     <td><%= link_to 'Destroy', release, :confirm => 'Are you sure?', :method => :delete %></td>

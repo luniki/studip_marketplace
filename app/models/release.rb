@@ -33,7 +33,7 @@ class Release < ActiveRecord::Base
   VERSION = /\d+\.\d+\.\d+/
 
   validates_format_of :version, :with => VERSION
-  validates_format_of :min, :max, :with => VERSION, :allow_blank => true
+  validates_format_of :studipMinVersion, :studipMaxVersion, :with => VERSION, :allow_blank => true
 
   def manifest
     unless @manifest || new_record? then
@@ -50,8 +50,8 @@ protected
 
   def populate_from_manifest
     self.version = @manifest.version
-    self.min     = @manifest.studipMinVersion
-    self.max     = @manifest.studipMaxVersion
+    self.studipMinVersion = @manifest.studipMinVersion
+    self.studipMaxVersion = @manifest.studipMaxVersion
   end
 
   def must_have_valid_manifest

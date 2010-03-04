@@ -5,10 +5,6 @@ describe Release do
     zip = "#{Rails.root}/spec/fixtures/ExamplePlugin.zip"
     @valid_attributes = {
       :package => ActionController::TestUploadedFile.new(zip, "application/zip")
-#      :plugin_id => 1,
-#      :version => 1,
-#      :min => "value for min",
-#      :max => "value for max"
     }
   end
 
