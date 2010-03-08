@@ -9,7 +9,7 @@ module Paperclip
     def make
       dst = Tempfile.new([@basename, "manifest"].compact.join("."))
 
-      manifest = extract_manifest @file.path
+      manifest = Zip::ZipFile.open(@file.path){|z| z.read("plugin.manifest")}
       dst << manifest
 
       @attachment.instance.manifest = Manifest.new manifest
@@ -17,11 +17,6 @@ module Paperclip
       dst
       rescue Exception => e
         raise PaperclipError, "There was an error processing the manifest for #{@basename} #{e}"
-    end
-
-    def extract_manifest(path)
-      z = Zip::ZipFile.open path
-      z.read("plugin.manifest")
     end
   end
 end
