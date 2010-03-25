@@ -29,7 +29,7 @@ class Release < ActiveRecord::Base
                                               ]
   validates_attachment_size :package, :less_than => 5.megabyte
 
-  VERSION = /\d+\.\d+\.\d+/
+  VERSION = /\d+\.\d+(\.\d+)?/
 
   validates_format_of :version, :with => VERSION
   validates_format_of :studipMinVersion, :studipMaxVersion, :with => VERSION, :allow_blank => true
