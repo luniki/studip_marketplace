@@ -33,8 +33,7 @@
 
 
 
-
-
-
-<%= link_to 'Edit', edit_plugin_path(@plugin) %> |
+<% permitted_to? :update, :plugins do %>
+  <%= link_to 'Edit', edit_plugin_path(@plugin) %> |
+<% end %>
 <%= link_to 'Back', plugins_path %>

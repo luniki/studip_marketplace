@@ -6,9 +6,10 @@
 
     <div class="plugin-actions">
         <ul>
-        <% permitted_to? :create, :plugins do %>
-            <li><%= link_to 'Show', plugin %></li>
+        <% permitted_to? :update, :plugins do %>
             <li><%= link_to 'Edit', edit_plugin_path(plugin) %></li>
+        <% end %>
+        <% permitted_to? :delete, :plugins do %>
             <li><%= link_to 'Destroy', plugin, :confirm => 'Are you sure?', :method => :delete %></li>
         <% end %>
         </ul>
