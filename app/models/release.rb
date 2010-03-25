@@ -10,6 +10,8 @@ class Release < ActiveRecord::Base
                     :path => ":rails_root/assets/:url",
                     :styles => {
                       :manifest => {
+                        :url => "/paperclip/:attachment/:id/:style/plugin.manifest",
+                        :path => ":rails_root/assets/:url", # TODO does not work :-(
                         :processors => [:manifest_processor]
                       }
                     }
@@ -27,9 +29,6 @@ class Release < ActiveRecord::Base
                                               ]
   validates_attachment_size :package, :less_than => 5.megabyte
 
-  validate :must_have_valid_manifest
-  after_post_process :populate_from_manifest
-
   VERSION = /\d+\.\d+\.\d+/
 
   validates_format_of :version, :with => VERSION
@@ -46,15 +45,4 @@ class Release < ActiveRecord::Base
     @manifest = manifest
   end
 
-protected
-
-  def populate_from_manifest
-    self.version = @manifest.version
-    self.studipMinVersion = @manifest.studipMinVersion
-    self.studipMaxVersion = @manifest.studipMaxVersion
-  end
-
-  def must_have_valid_manifest
-    manifest.validate errors
-  end
 end

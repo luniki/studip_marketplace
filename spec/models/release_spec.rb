@@ -6,10 +6,23 @@ describe Release do
     @valid_attributes = {
       :package => ActionController::TestUploadedFile.new(zip, "application/zip")
     }
+    zip = "#{Rails.root}/spec/fixtures/InvalidPlugin.zip"
+    @invalid_attributes = {
+      :package => ActionController::TestUploadedFile.new(zip, "application/zip")
+    }
   end
 
   it "should create a new instance given valid attributes" do
     Release.create!(@valid_attributes)
+  end
+
+  it "should raise an error on create! if the plugin is invalid" do
+    lambda { Release.create!(@invalid_attributes) }.should raise_error
+  end
+
+  it "should not be valid if the plugin file is invalid" do
+    release = Release.create(@invalid_attributes)
+    release.should_not be_valid
   end
 
   it "should have a manifest" do

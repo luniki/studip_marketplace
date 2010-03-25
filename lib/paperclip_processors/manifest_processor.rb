@@ -9,14 +9,18 @@ module Paperclip
     def make
       dst = Tempfile.new([@basename, "manifest"].compact.join("."))
 
-      manifest = Zip::ZipFile.open(@file.path){|z| z.read("plugin.manifest")}
-      dst << manifest
+      manifest_string = Zip::ZipFile.open(@file.path){|z| z.read("plugin.manifest")}
+      dst << manifest_string
 
-      @attachment.instance.manifest = Manifest.new manifest
+      manifest = Manifest.new manifest_string
+      @attachment.instance.manifest = manifest
+      @attachment.instance.version = manifest.version
+      @attachment.instance.studipMinVersion = manifest.studipMinVersion
+      @attachment.instance.studipMaxVersion = manifest.studipMaxVersion
 
       dst
       rescue Exception => e
-        raise PaperclipError, "There was an error processing the manifest for #{@basename} #{e}"
+        raise PaperclipError, "The zip file is not a valid plugin release package (#{e})"
     end
   end
 end

@@ -15,6 +15,9 @@ module NavigationHelpers
     when /the new plugin page/i
       new_plugin_path
 
+    when /the plugins page/i
+      plugins_path
+
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +

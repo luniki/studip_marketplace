@@ -30,17 +30,4 @@ class Manifest
       end
     end
   end
-
-  def validate(errors)
-#    validate_classname errors
-#    validate_version errors, :version, :studipMaxVersion, :studipMinVersion
-  end
-
-protected
-  def validate_classname errors
-    errors.add
-  end
-
-  def validate_version errors, *fields
-  end
 end

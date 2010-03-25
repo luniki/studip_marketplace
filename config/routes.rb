@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :plugins, :has_many => [:releases]
+  map.resources :plugins, :has_many => [:releases], :shallow => true
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products

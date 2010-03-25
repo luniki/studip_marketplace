@@ -5,7 +5,7 @@ I want to create entries for my plugins
 Scenario: unauthenticated users may not create plugins
   Given I am not logged in
   When I go to the new plugin page
-  Then I should get an error message
+  Then I should see an error message
 
 Scenario: a new plugin is created
   Given I am logged in as a developer

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Manifest do
-  before(:each) do
-    @valid_attributes = {
 
-    }
+  it "should create an empty instance w/o attributes" do
+    manifest = Manifest.new
+    manifest.pluginclassname.should be_nil
   end
 
   it "should create a new instance given valid attributes" do

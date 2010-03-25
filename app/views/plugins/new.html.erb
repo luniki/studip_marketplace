@@ -2,11 +2,15 @@
 
 <% semantic_form_for @plugin, :html => {:multipart => true} do |form| %>
   <%= form.error_messages %>
-  <% form.semantic_fields_for :release do |release| %>
-    <% release.inputs do %>
-      <%= release.input :package, :as => :file %>
-    <% end %>
-  <% end %>
+  <%= debug @plugin %>
+  <fieldset class="inputs">
+    <ol>
+      <li class="file required" id="zip_input">
+        <label for="zip">Package<abbr title="required">*</abbr></label>
+        <input id="zip" name="zip" size="30" type="file" />
+      </li>
+    </ol>
+  </fieldset>
   <% form.buttons do %>
     <%= form.commit_button "Create" %>
   <% end %>

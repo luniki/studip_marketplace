@@ -43,17 +43,20 @@ class PluginsController < ApplicationController
   # POST /plugins
   # POST /plugins.xml
   def create
-    @plugin = Plugin.new(params[:plugin])
-    @plugin.user = current_user
+    @plugin = Plugin.from_zip! params[:zip]
+    current_user.plugins << @plugin
+
+    flash[:notice] = 'Plugin was successfully created.'
     respond_to do |format|
-      if @plugin.save
-        flash[:notice] = 'Plugin was successfully created.'
         format.html { redirect_to(@plugin) }
         format.xml  { render :xml => @plugin, :status => :created, :location => @plugin }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @plugin.errors, :status => :unprocessable_entity }
-      end
+    end
+
+  rescue Exception => e
+    flash[:error] = "Plugin could not be created. #{e}"
+    respond_to do |format|
+      format.html { render :action => "new" }
+      format.xml  { render :xml => @plugin.errors, :status => :unprocessable_entity }
     end
   end
 
