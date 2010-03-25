@@ -1,20 +1,27 @@
-<li>
+<li class="plugin">
     <h3>
         <%=link_to h(plugin.name), plugin %>
         <%= image_tag plugin.screenshot.url(:thumb) %>
     </h3>
-    <dl>
-        <dt>Author</dt>
-        <dd><%=mail_to plugin.user.email %></dd>
 
-        <dt>Homepage</dt>
-        <dd><%=link_to plugin.homepage %></dd>
-    </dl>
-    <p><%=h plugin.description %></p>
+    <div class="plugin-actions">
+        <ul>
+        <% permitted_to? :create, :plugins do %>
+            <li><%= link_to 'Show', plugin %></li>
+            <li><%= link_to 'Edit', edit_plugin_path(plugin) %></li>
+            <li><%= link_to 'Destroy', plugin, :confirm => 'Are you sure?', :method => :delete %></li>
+        <% end %>
+        </ul>
+    </div>
 
-<% permitted_to? :create, :plugins do %>
-    <%= link_to 'Show', plugin %>
-    <%= link_to 'Edit', edit_plugin_path(plugin) %>
-    <%= link_to 'Destroy', plugin, :confirm => 'Are you sure?', :method => :delete %>
-<% end %>
+    <div class="plugin-info">
+        <dl>
+            <dt>Author</dt>
+            <dd><%=mail_to plugin.user.email %></dd>
+
+            <dt>Homepage</dt>
+            <dd><%=link_to plugin.homepage %></dd>
+        </dl>
+        <p><%=h plugin.description %></p>
+    </div>
 </li>

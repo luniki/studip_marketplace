@@ -1,4 +1,53 @@
-#plugins li {
+#topnav {
+  width: 100%;
+  background: url(../images/topnav_bg.png) repeat-x top left;
+  float: left;
+  line-height: 3em;
+  border-bottom: 1px solid #7aa;
+  margin-bottom: 1.5em;
+}
+
+#topnav ul {
+  width: 960px;
+  border-left: 1px solid #7387AC;
+  padding: 0;
+  margin: 0 auto;
+}
+
+#topnav a {
+  color: #9db8eb;
+  display: block;
+  text-shadow: #000 1px 1px 1px;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+#topnav a:hover {
+  color: #fff;
+  text-decoration: underline;
+  background-color: #7387AC;
+}
+
+#topnav li {
+  list-style: none;
+  float: right;
+  border-right: 1px solid #7387AC;
+}
+
+
+#flash, #content {
+  width: 960px;
+  margin: 0 auto;
+  clear: both;
+}
+
+
+#plugins {
+  margin: 0;
+  padding: 0;
+}
+
+#plugins .plugin {
   background: url(../images/plugin_bg.png) repeat-x bottom left;
   padding: 0.75em 0.75em 0.75em 60px;
   list-style: none;
@@ -6,10 +55,20 @@
 }
 
 #plugins h3 {
+  float: left;
 }
 
 #plugins h3 img {
   position: absolute;
   top: 0.5em;
   left: 0.5em;
+}
+
+#plugins .plugin-info {
+  clear: left;
+}
+
+#plugins .plugin-actions {
+  float: right;
+  width: 15em;
 }

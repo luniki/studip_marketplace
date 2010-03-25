@@ -10,11 +10,11 @@
     <%= stylesheet_link_tag "application" %>
   </head>
   <body class="<%= body_class %>">
-    <%= link_to "Register", sign_up_path unless current_user %>
-    <%= link_to "Login", sign_in_path unless current_user %>
-    <%= link_to "Logout", sign_out_path if current_user %>
+    <%= render :partial => 'shared/topnav' -%>
     <%= render :partial => 'shared/flashes' -%>
+    <div id="content">
     <%= yield %>
+    </div>
     <%= render :partial => 'shared/javascript' %>
   </body>
 </html>
