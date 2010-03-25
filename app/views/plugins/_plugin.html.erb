@@ -1,6 +1,8 @@
 <li>
-    <h3><%=link_to h(plugin.name), plugin %></h3>
-    <%= image_tag plugin.screenshot.url(:thumb) %>
+    <h3>
+        <%=link_to h(plugin.name), plugin %>
+        <%= image_tag plugin.screenshot.url(:thumb) %>
+    </h3>
     <dl>
         <dt>Author</dt>
         <dd><%=mail_to plugin.user.email %></dd>
