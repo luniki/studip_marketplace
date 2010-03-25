@@ -1,12 +1,16 @@
 <div id="topnav">
   <ul>
     <% unless current_user -%>
-      <li><%= link_to "Register", sign_up_path %></li>
       <li><%= link_to "Login", sign_in_path %></li>
+      <li><%= link_to "Register", sign_up_path %></li>
     <% end %>
     <% if current_user -%>
       <li><%= link_to "Logout", sign_out_path %></li>
     <% end %>
+    <% permitted_to? :create, :plugins do %>
+      <li><%= link_to 'New plugin', new_plugin_path %></li>
+    <% end %>
+    <li><%= link_to 'Plugins', plugins_path %></li>
   </ul>
 </div>
 

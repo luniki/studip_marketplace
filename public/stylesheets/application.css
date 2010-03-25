@@ -45,6 +45,8 @@
 #plugins {
   margin: 0;
   padding: 0;
+  border:4px solid #B5D9E5;
+  border-radius: 5px;
 }
 
 #plugins .plugin {
@@ -71,4 +73,5 @@
 #plugins .plugin-actions {
   float: right;
   width: 15em;
+  border-left:1px dotted #B4DFEE;
 }
