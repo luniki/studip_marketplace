@@ -1,4 +1,5 @@
 class Plugin < ActiveRecord::Base
+
   belongs_to :user # TODO should be called owner instead
   has_many :releases
 
@@ -15,7 +16,7 @@ class Plugin < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_format_of :name, :with => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/
 
-  def self.from_zip! zip #TODO besser from_zip? oder was?
+  def self.from_zip! zip
     plugin = Plugin.new
     release = Release.create! :package => zip
     plugin.releases << release
