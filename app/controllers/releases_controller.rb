@@ -1,8 +1,6 @@
 class ReleasesController < ApplicationController
 
-  filter_resource_access :nested_in => :plugins
-
-  before_filter :populate_plugin
+  filter_resource_access :nested_in => :plugins, :shallow => true
 
   # GET /releases
   # GET /releases.xml
