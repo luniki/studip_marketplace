@@ -9,3 +9,5 @@ coverage/*
 
 !.keep
 rerun.txt
+config/development.sphinx.conf
+db/sphinx
