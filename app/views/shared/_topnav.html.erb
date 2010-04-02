@@ -1,4 +1,8 @@
 <div id="topnav">
+  <% form_tag(plugins_path, :method => :get) do %>
+    <%= text_field_tag 'q', params[:q] %>
+    <%= submit_tag t(:search) %>
+  <% end %>
   <ul>
     <% unless current_user -%>
       <li><%= link_to "Login", sign_in_path %></li>

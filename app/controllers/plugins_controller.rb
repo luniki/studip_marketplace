@@ -5,7 +5,12 @@ class PluginsController < ApplicationController
   # GET /plugins
   # GET /plugins.xml
   def index
-    @plugins = Plugin.all
+    if params[:q].present?
+      @plugins = Plugin.search params[:q], :star => true,
+                                            :page => (params[:page] || 1)
+    else
+      @plugins = Plugin.paginate :page => (params[:page] || 1)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,15 @@
 <h1>Listing plugins</h1>
 
+<% unless params[:q].blank? -%>
+<h2>
+  <span id="search_count"><%= @plugins.total_entries %></span>
+  <%= t(:search_results_for) %>
+  "<span id="search_term"><%= h(params[:q]) %></span>"
+</h2>
+<% end %>
+
+<%= will_paginate @plugins %>
+
 <ul id="plugins">
 <%= render :partial => "plugin", :collection => @plugins %>
 </ul>

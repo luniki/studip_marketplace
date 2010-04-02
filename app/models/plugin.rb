@@ -16,6 +16,10 @@ class Plugin < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_format_of :name, :with => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/
 
+  define_index do
+    indexes :name, :description
+  end
+
   # TODO (mlunzena) how can I make sure, that a plugin belongs to a user?
   def self.from_zip! zip
     plugin = Plugin.new
