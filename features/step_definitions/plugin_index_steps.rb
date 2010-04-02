@@ -17,3 +17,15 @@ Then /^I should see the plugin's page$/ do
   URI.parse(current_url).path.should == plugin_path(@plugin)
 end
 
+Given /^the following plugin exists:$/ do |table|
+  table.hashes.each do |hash|
+    attributes = {}
+    hash.each {|k, v| attributes[k.gsub(' ','').underscore] = v}
+    @plugin = Factory.create(:plugin, attributes)
+  end
+end
+
+When /I search for "(.+)"/ do |query|
+  When %{I fill in "q" with "#{query}"}
+end
+
