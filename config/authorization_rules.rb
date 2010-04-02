@@ -1,6 +1,7 @@
 authorization do
   role :guest do
     has_permission_on :plugins, :to => [:index, :show]
+    has_permission_on :releases, :to => [:index, :show]
   end
 
   role :author do
