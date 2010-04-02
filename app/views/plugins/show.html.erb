@@ -1,39 +1,34 @@
-<p>
-  <b>User:</b>
-  <%=h @plugin.user.email %>
-</p>
+<div class="plugin-info">
+  <h2><%=h @plugin.name %></h2>
+  <span class="author"><%= t :by %> <%= h @plugin.user.email %></span>
 
-<p>
-  <b>Name:</b>
-  <%=h @plugin.name %>
-</p>
+  <%= image_tag @plugin.screenshot.url(:thumb), :class => "screenshot"  if @plugin.screenshot.file? %>
 
-<p>
-  <b>Description:</b>
-  <%=h @plugin.description %>
-</p>
+  <div class="description"><%=h @plugin.description %></div>
 
-<p>
-  <b>Homepage:</b>
-  <%=h @plugin.homepage %>
-</p>
-
-<%= image_tag @plugin.screenshot.url(:thumb) %>
-
-
-<%= link_to 'New release', new_plugin_release_path(@plugin) %>
-
-<ul id="releases">
-  <% @plugin.releases.each do |release| -%>
-    <% content_tag_for(:li, release) do %>
-      <%= link_to h(release.version), release %>
-    <% end %>
+  <% if @plugin.homepage.present? %>
+  <p>
+    <b>Homepage:</b>
+    <%=h @plugin.homepage %>
+  </p>
   <% end %>
-</ul>
 
 
+  <h3><%= t :Releases %></h3>
 
-<% permitted_to? :update, :plugins do %>
-  <%= link_to 'Edit', edit_plugin_path(@plugin) %> |
-<% end %>
-<%= link_to 'Back', plugins_path %>
+  <ul id="releases">
+    <% @plugin.releases.each do |release| -%>
+      <% content_tag_for(:li, release) do %>
+        <%= link_to h(release.version), release %>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <% permitted_to? :update, :plugins do %>
+    <%= link_to 'Edit', edit_plugin_path(@plugin) %> |
+    <%= link_to 'New release', new_plugin_release_path(@plugin) %> |
+  <% end %>
+
+  <%= link_to 'Back', plugins_path %>
+
+</div>

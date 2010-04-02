@@ -45,15 +45,16 @@
 #plugins {
   margin: 0;
   padding: 0;
-  border:4px solid #20407f;
+  border: 2px solid #20407f;
   border-radius: 5px;
 }
 
 #plugins .plugin {
   background: url(../images/plugin_bg.png) repeat-x bottom left;
-  padding: 0.75em 0.75em 0.75em 60px;
+  padding: 0.75em 0.75em 0.75em 150px;
   list-style: none;
   position: relative;
+  min-height: 128px;
 }
 
 #plugins h3 {
@@ -74,4 +75,33 @@
   float: right;
   width: 15em;
   border-left:1px dotted #B4DFEE;
+}
+
+.plugin-info h2 {
+  display: inline;
+}
+
+.plugin-info .author {
+  color: #888;
+  display: block;
+}
+
+.plugin-info .screenshot {
+  float: left;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.plugin-info .description {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  width: 35em;
+}
+
+.plugin-info .screenshot + .description {
+  margin-left: 250px;
+}
+
+.plugin-info h3 {
+  clear: both;
 }
