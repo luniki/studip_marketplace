@@ -31,8 +31,6 @@ Rails::Initializer.run do |config|
              :version => '>= 2.3.1.1'
   config.gem 'rack',
              :version => '>= 1.0.1'
-  config.gem 'declarative_authorization',
-             :source => 'http://gemcutter.org'
   config.gem 'rubyzip', :lib => 'zip/zipfilesystem'
   # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
