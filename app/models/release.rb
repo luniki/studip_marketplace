@@ -28,6 +28,7 @@ class Release < ActiveRecord::Base
   VERSION = /\d+\.\d+(\.\d+)?/
 
   validates_format_of :version, :with => VERSION
+  validates_uniqueness_of :version, :scope => :plugin_id
   validates_format_of :studipMinVersion, :studipMaxVersion, :with => VERSION, :allow_blank => true
 
   def manifest
