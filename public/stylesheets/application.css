@@ -7,6 +7,10 @@
   margin-bottom: 1.5em;
 }
 
+#topnav form {
+  float: left;
+}
+
 #topnav ul {
   width: 960px;
   border-left: 1px solid #7387AC;
@@ -75,6 +79,7 @@
   float: right;
   width: 15em;
   border-left:1px dotted #B4DFEE;
+  padding-left: 1em;
 }
 
 .plugin-info h2 {
@@ -104,4 +109,36 @@
 
 .plugin-info h3 {
   clear: both;
+}
+
+
+.download {
+  margin-bottom: 1em;
+}
+
+.download .button {
+  background: #8a8a8a url(../images/button-grey.jpg) repeat-x center center;
+  border: 1px solid #777;
+  text-shadow: -1px -1px 1px #888;
+  font-size:0.85em;
+  font-weight:bold;
+  line-height:2em;
+  padding:0.4em 0.8em 0.3em 0.5em;
+}
+
+.download img {
+  padding: 0em 0.6em 0.3em 0.2em;
+  vertical-align: middle;
+  height: 8px;
+  width: 8px;
+}
+
+.download-button-text {
+  vertical-align: baseline;
+  font-weight:bold;
+  line-height:2em;
+  color: white;
+}
+.download a {
+  text-decoration: none;
 }
