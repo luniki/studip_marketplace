@@ -49,10 +49,9 @@ class PluginsController < ApplicationController
   # POST /plugins.xml
   def create
     @plugin = Plugin.from_zip params[:zip]
-#    current_user.plugins << @plugin
-
     respond_to do |format|
       if @plugin.errors.empty?
+        current_user.plugins << @plugin
         flash[:notice] = 'Plugin was successfully created.'
         format.html { redirect_to(@plugin) }
         format.xml  { render :xml => @plugin, :status => :created, :location => @plugin }

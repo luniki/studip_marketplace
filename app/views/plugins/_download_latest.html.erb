@@ -1,6 +1,8 @@
+<% if plugin.last_release -%>
 <div class="download">
     <a class="button" href="<%= plugin.last_release.package.url %>">
         <%= image_tag "go.gif" %>
         <span class="download-button-text" title="Download">Download</span>
     </a>
 </div>
+<% end %>
