@@ -1,4 +1,4 @@
-<h1>Listing releases</h1>
+<h1>Listing releases for plugin <%= @plugin.name %></h1>
 
 <table>
   <tr>
@@ -23,4 +23,4 @@
 
 <br />
 
-<%= link_to 'New release', new_release_path %>
+<%= link_to 'New release', new_plugin_release_path(@plugin) %>
