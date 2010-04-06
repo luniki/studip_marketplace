@@ -5,7 +5,7 @@ class ReleasesController < ApplicationController
   # GET /releases
   # GET /releases.xml
   def index
-    @releases = Release.all
+    @releases = @plugin.releases
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class ReleasesController < ApplicationController
   # POST /releases
   # POST /releases.xml
   def create
-    @release = Release.new(params[:release])
+    @release = @plugin.releases.build(params[:release])
 
     respond_to do |format|
       if @release.save
