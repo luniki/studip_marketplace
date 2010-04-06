@@ -3,7 +3,8 @@
 <% semantic_form_for @plugin, :html => {:multipart => true} do |form| %>
   <%= form.error_messages %>
   <% form.inputs do %>
-    <%= form.input :name %>
+    <%= form.input :name, :input_html => {:disabled => true},
+                          :wrapper_html => { :class => "quiet" } %>
     <%= form.input :description %>
     <%= form.input :homepage %>
     <%= form.input :screenshot %>
@@ -13,6 +14,4 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Show', @plugin %> |
-<%= link_to 'Back', plugins_path %>
-
+<%= link_to t(:back), @plugin %>
