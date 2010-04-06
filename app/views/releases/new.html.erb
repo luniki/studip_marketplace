@@ -1,7 +1,7 @@
 <h1>New release</h1>
 
-<% semantic_form_for([@plugin, @release]) do |form| %>
-  <%= form.error_messages %>
+<% semantic_form_for([@plugin, @release], :html => {:multipart => true}) do |form| %>
+  <%= form.semantic_errors %>
 
   <% form.inputs do %>
     <%= form.input :package %>
@@ -10,8 +10,5 @@
     <%= form.commit_button "Create" %>
   <% end %>
 <% end %>
-
-<%= debug @plugin %>
-<%= debug @release %>
 
 <%= link_to 'Back', plugin_releases_path(@plugin) %>
