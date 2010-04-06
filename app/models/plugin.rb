@@ -12,7 +12,7 @@ class Plugin < ActiveRecord::Base
                     :url  => "/paperclip/:attachment/:id_:style.:extension",
                     :path => ":rails_root/public/paperclip/:attachment/:id_:style.:extension"
 
-  attr_accessible :name, :description, :homepage, :screenshot
+  attr_accessible :description, :homepage, :screenshot
 
   validates_uniqueness_of :name
   validates_format_of :name, :with => /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/
