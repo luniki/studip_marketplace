@@ -6,12 +6,8 @@ class Release < ActiveRecord::Base
   attr_accessible :package
 
   has_attached_file :package,
-                    :url  => "/paperclip/:attachment/:id/:style/:filename",
-                    :path => ":rails_root/assets/:url",
                     :styles => {
                       :manifest => {
-                        :url => "/paperclip/:attachment/:id/:style/plugin.manifest",
-                        :path => ":rails_root/assets/:url", # TODO does not work :-(
                         :processors => [:manifest_processor]
                       }
                     }
