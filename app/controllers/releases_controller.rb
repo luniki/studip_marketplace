@@ -77,10 +77,11 @@ class ReleasesController < ApplicationController
   # DELETE /releases/1.xml
   def destroy
     @release = Release.find(params[:id])
+    plugin = @release.plugin
     @release.destroy
 
     respond_to do |format|
-      format.html { redirect_to(releases_url) }
+      format.html { redirect_to(plugin) }
       format.xml  { head :ok }
     end
   end
