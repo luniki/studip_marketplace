@@ -13,7 +13,7 @@ authorization do
       if_attribute :user => is { user }
     end
 
-    has_permission_on :releases, :to => :create do
+    has_permission_on :releases, :to => [:create, :delete] do
       if_permitted_to :update, :plugin
     end
 
