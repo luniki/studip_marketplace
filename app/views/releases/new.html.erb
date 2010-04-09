@@ -1,7 +1,9 @@
 <h1>New release</h1>
 
 <% semantic_form_for([@plugin, @release], :html => {:multipart => true}) do |form| %>
-  <%= form.semantic_errors %>
+  <% unless @release.errors.on :package %>
+    <%= form.semantic_errors :version, :studipMinVersion, :studipMaxVersion %>
+  <% end %>
 
   <% form.inputs do %>
     <%= form.input :package %>
