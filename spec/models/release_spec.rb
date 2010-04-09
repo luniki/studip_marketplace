@@ -53,4 +53,12 @@ describe Release do
       @release.manifest.should == mock
     end
   end
+
+  it "should have errors on invalid studipMin/MaxVersion" do
+    file = "#{Rails.root}/spec/fixtures/InvalidStudipVersion.zip"
+    zip = ActionController::TestUploadedFile.new(file, "application/zip")
+    release = Release.create :package => zip
+    release.errors.should be_invalid(:studipMinVersion)
+    release.errors.should be_invalid(:studipMaxVersion)
+  end
 end
