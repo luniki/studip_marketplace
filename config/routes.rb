@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  Clearance::Routes.draw(map)
 
   map.resources :plugins, :has_many => [:releases], :shallow => true
 

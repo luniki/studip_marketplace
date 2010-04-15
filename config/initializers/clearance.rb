@@ -1,1 +1,3 @@
-ClearanceMailer::DO_NOT_REPLY = "donotreply@example.com"
+Clearance.configure do |config|
+  config.mailer_sender = 'donotreply@example.com'
+end
