@@ -7,8 +7,15 @@ describe Manifest do
     manifest.pluginclassname.should be_nil
   end
 
-  it "should create a new instance given valid attributes" do
-    manifest = Manifest.new ""
+  it "should create a new instance from a string" do
+    manifest = Manifest.new "pluginclassname= Name \n"
     manifest.should_not be_nil
+    manifest.pluginclassname = "Name"
+  end
+
+  it "should create a new instance from a hash" do
+    manifest = Manifest.new :pluginclassname => " Name \n"
+    manifest.should_not be_nil
+    manifest.pluginclassname = "Name"
   end
 end

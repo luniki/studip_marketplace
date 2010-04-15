@@ -2,129 +2,116 @@ require 'spec_helper'
 
 describe ReleasesController do
 
-  def mock_release(stubs={})
-    @mock_release ||= mock_model(Release, stubs)
+  before :each do
+    @plugin = Factory :plugin
+    @release = Factory :release, :plugin => @plugin
   end
 
   describe "GET index" do
+    it_should_behave_like "a controller without flash errors"
+
     it "assigns all releases as @releases" do
-      Release.stub!(:find).with(:all).and_return([mock_release])
-      get :index
-      assigns[:releases].should == [mock_release]
+      get :index, :plugin_id => @plugin.id
+      assigns[:releases].should == [@release]
     end
   end
 
   describe "GET show" do
+    it_should_behave_like "a controller without flash errors"
+
     it "assigns the requested release as @release" do
-      Release.stub!(:find).with("37").and_return(mock_release)
-      get :show, :id => "37"
-      assigns[:release].should equal(mock_release)
+      id = @release.id.to_s
+      Release.should_receive(:find).with(id).and_return(@release)
+      get :show, :id => id
+      assigns[:release].should equal(@release)
     end
   end
 
   describe "GET new" do
-    it "assigns a new release as @release" do
-      Release.stub!(:new).and_return(mock_release)
-      get :new
-      assigns[:release].should equal(mock_release)
-    end
-  end
 
-  describe "GET edit" do
-    it "assigns the requested release as @release" do
-      Release.stub!(:find).with("37").and_return(mock_release)
-      get :edit, :id => "37"
-      assigns[:release].should equal(mock_release)
+    it_should_behave_like "a controller accessed authorized"
+    it_should_behave_like "a controller without flash errors"
+
+    before :each do
+      @plugin = Factory(:plugin, :user => @current_user)
+      @release = Factory.build :release, :plugin => @plugin
+    end
+
+    it "assigns a new release as @release" do
+      Release.stub!(:new).and_return(@release)
+      get :new, :plugin_id => @plugin.id
+      assigns[:release].should equal(@release)
     end
   end
 
   describe "POST create" do
 
+    it_should_behave_like "a controller accessed authorized"
+
+    before :each do
+      @plugin = Factory(:plugin, :user => @current_user)
+      @release = Factory.create :release, :plugin => @plugin
+    end
+
     describe "with valid params" do
+
+      it_should_behave_like "a controller without flash errors"
+
       it "assigns a newly created release as @release" do
-        Release.stub!(:new).with({'these' => 'params'}).and_return(mock_release(:save => true))
-        post :create, :release => {:these => 'params'}
-        assigns[:release].should equal(mock_release)
+        Release.should_receive(:new).and_return(@release)
+        post :create, :plugin_id => @plugin.id, :release => {:package => 'a file'}
+        assigns[:release].should equal(@release)
       end
 
       it "redirects to the created release" do
-        Release.stub!(:new).and_return(mock_release(:save => true))
-        post :create, :release => {}
-        response.should redirect_to(release_url(mock_release))
+        Release.stub!(:new).and_return(@release)
+        post :create, :plugin_id => @plugin.id, :release => {}
+        response.should redirect_to(release_url(@release))
       end
     end
 
     describe "with invalid params" do
+
+      before :each do
+        @release.stub!(:save).and_return(false)
+      end
+
       it "assigns a newly created but unsaved release as @release" do
-        Release.stub!(:new).with({'these' => 'params'}).and_return(mock_release(:save => false))
-        post :create, :release => {:these => 'params'}
-        assigns[:release].should equal(mock_release)
+        Release.stub!(:new).with({'these' => 'params'}).and_return(@release)
+        post :create, :plugin_id => @plugin.id, :release => {:these => 'params'}
+        assigns[:release].should equal(@release)
       end
 
       it "re-renders the 'new' template" do
-        Release.stub!(:new).and_return(mock_release(:save => false))
-        post :create, :release => {}
+        Release.stub!(:new).and_return(@release)
+        post :create, :plugin_id => @plugin.id, :release => {}
         response.should render_template('new')
       end
     end
 
   end
 
-  describe "PUT update" do
-
-    describe "with valid params" do
-      it "updates the requested release" do
-        Release.should_receive(:find).with("37").and_return(mock_release)
-        mock_release.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :release => {:these => 'params'}
-      end
-
-      it "assigns the requested release as @release" do
-        Release.stub!(:find).and_return(mock_release(:update_attributes => true))
-        put :update, :id => "1"
-        assigns[:release].should equal(mock_release)
-      end
-
-      it "redirects to the release" do
-        Release.stub!(:find).and_return(mock_release(:update_attributes => true))
-        put :update, :id => "1"
-        response.should redirect_to(release_url(mock_release))
-      end
-    end
-
-    describe "with invalid params" do
-      it "updates the requested release" do
-        Release.should_receive(:find).with("37").and_return(mock_release)
-        mock_release.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :release => {:these => 'params'}
-      end
-
-      it "assigns the release as @release" do
-        Release.stub!(:find).and_return(mock_release(:update_attributes => false))
-        put :update, :id => "1"
-        assigns[:release].should equal(mock_release)
-      end
-
-      it "re-renders the 'edit' template" do
-        Release.stub!(:find).and_return(mock_release(:update_attributes => false))
-        put :update, :id => "1"
-        response.should render_template('edit')
-      end
-    end
-
-  end
-
   describe "DELETE destroy" do
+
+    it_should_behave_like "a controller accessed authorized"
+    it_should_behave_like "a controller without flash errors"
+
+    before :each do
+      @plugin = Factory(:plugin, :user => @current_user)
+      @release = Factory.create :release, :plugin => @plugin
+    end
+
     it "destroys the requested release" do
-      Release.should_receive(:find).with("37").and_return(mock_release)
-      mock_release.should_receive(:destroy)
-      delete :destroy, :id => "37"
+      Release.should_receive(:find).with(@plugin.id.to_s).and_return(@release)
+      @release.should_receive(:destroy)
+      delete :destroy, :id => @plugin.id
     end
 
     it "redirects to the releases list" do
-      Release.stub!(:find).and_return(mock_release(:destroy => true))
-      delete :destroy, :id => "1"
-      response.should redirect_to(releases_url)
+      @release.stub!(:destroy).and_return(true)
+      Release.stub!(:find).and_return(@release)
+      delete :destroy, :id => @release.id
+      response.should redirect_to(plugin_url(@plugin))
     end
   end
 

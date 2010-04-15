@@ -3,11 +3,11 @@ require 'spec_helper'
 describe ReleasesController do
   describe "routing" do
     it "recognizes and generates #index" do
-      { :get => "/releases" }.should route_to(:controller => "releases", :action => "index")
+      { :get => "/plugins/6/releases" }.should route_to(:controller => "releases", :action => "index", :plugin_id => "6")
     end
 
     it "recognizes and generates #new" do
-      { :get => "/releases/new" }.should route_to(:controller => "releases", :action => "new")
+      { :get => "/plugins/6/releases/new" }.should route_to(:controller => "releases", :action => "new", :plugin_id => "6")
     end
 
     it "recognizes and generates #show" do
@@ -19,15 +19,15 @@ describe ReleasesController do
     end
 
     it "recognizes and generates #create" do
-      { :post => "/releases" }.should route_to(:controller => "releases", :action => "create") 
+      { :post => "/plugins/6/releases" }.should route_to(:controller => "releases", :action => "create", :plugin_id => "6")
     end
 
     it "recognizes and generates #update" do
-      { :put => "/releases/1" }.should route_to(:controller => "releases", :action => "update", :id => "1") 
+      { :put => "/releases/1" }.should route_to(:controller => "releases", :action => "update", :id => "1")
     end
 
     it "recognizes and generates #destroy" do
-      { :delete => "/releases/1" }.should route_to(:controller => "releases", :action => "destroy", :id => "1") 
+      { :delete => "/releases/1" }.should route_to(:controller => "releases", :action => "destroy", :id => "1")
     end
   end
 end

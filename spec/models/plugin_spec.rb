@@ -18,6 +18,12 @@ describe Plugin do
     plugin.should_not be_valid
   end
 
+  it "should prevent editing of plugin name" do
+    plugin = Plugin.create!(@valid_attributes)
+    plugin.update_attributes!(:name => "another name")
+    plugin.reload.name.should_not == "another name"
+  end
+
   it "should be creatable from a valid zip" do
     file = "#{Rails.root}/spec/fixtures/ExamplePlugin.zip"
     zip = ActionController::TestUploadedFile.new(file, "application/zip")
