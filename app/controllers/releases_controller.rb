@@ -16,8 +16,6 @@ class ReleasesController < ApplicationController
   # GET /releases/1
   # GET /releases/1.xml
   def show
-    @release = Release.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @release }
@@ -34,16 +32,9 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # GET /releases/1/edit
-  def edit
-    @release = Release.find(params[:id])
-  end
-
   # POST /releases
   # POST /releases.xml
   def create
-    @release = @plugin.releases.build(params[:release])
-
     respond_to do |format|
       if @release.save
         flash[:notice] = 'Release was successfully created.'
@@ -56,37 +47,14 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # PUT /releases/1
-  # PUT /releases/1.xml
-  def update
-    @release = Release.find(params[:id])
-
-    respond_to do |format|
-      if @release.update_attributes(params[:release])
-        flash[:notice] = 'Release was successfully updated.'
-        format.html { redirect_to(@release) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @release.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /releases/1
   # DELETE /releases/1.xml
   def destroy
-    @release = Release.find(params[:id])
     plugin = @release.plugin
     @release.destroy
-
     respond_to do |format|
       format.html { redirect_to(plugin) }
       format.xml  { head :ok }
     end
-  end
-
-  def populate_plugin
-    @plugin = Plugin.find(params[:plugin_id])
   end
 end

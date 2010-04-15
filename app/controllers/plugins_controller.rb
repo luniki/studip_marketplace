@@ -21,8 +21,6 @@ class PluginsController < ApplicationController
   # GET /plugins/1
   # GET /plugins/1.xml
   def show
-    @plugin = Plugin.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @plugin }
@@ -32,8 +30,6 @@ class PluginsController < ApplicationController
   # GET /plugins/new
   # GET /plugins/new.xml
   def new
-    @plugin = Plugin.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @plugin }
@@ -42,7 +38,6 @@ class PluginsController < ApplicationController
 
   # GET /plugins/1/edit
   def edit
-    @plugin = Plugin.find(params[:id])
   end
 
   # POST /plugins
@@ -66,8 +61,6 @@ class PluginsController < ApplicationController
   # PUT /plugins/1
   # PUT /plugins/1.xml
   def update
-    @plugin = Plugin.find(params[:id])
-
     respond_to do |format|
       if @plugin.update_attributes(params[:plugin])
         flash[:notice] = 'Plugin was successfully updated.'
@@ -83,7 +76,6 @@ class PluginsController < ApplicationController
   # DELETE /plugins/1
   # DELETE /plugins/1.xml
   def destroy
-    @plugin = Plugin.find(params[:id])
     @plugin.destroy
 
     respond_to do |format|
