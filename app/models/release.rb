@@ -16,7 +16,7 @@ class Release < ActiveRecord::Base
   validates_attachment_presence :package
   validates_attachment_content_type :package, :content_type => [
                                                  "application/zip",
-#                                                 "application/x-zip",
+                                                 "application/x-zip",
 #                                                 "application/x-zip-compressed",
 #                                                 "application/octet-stream",
 #                                                 "application/x-compress",
