@@ -9,7 +9,7 @@
   <% if @plugin.homepage.present? %>
   <p>
     <b>Homepage:</b>
-    <%=h @plugin.homepage %>
+    <%= link_to h(@plugin.homepage), h(@plugin.homepage) %>
   </p>
   <% end %>
 

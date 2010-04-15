@@ -28,6 +28,6 @@
                 <dd><%=link_to plugin.homepage %></dd>
             <% end %>
         </dl>
-        <p><%=h truncate(plugin.description, 85) %></p>
+        <p><%=h truncate(plugin.description, :length => 85) %></p>
     </div>
 </li>
