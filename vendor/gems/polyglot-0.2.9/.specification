@@ -1,6 +1,10 @@
 --- !ruby/object:Gem::Specification 
 name: polyglot
 version: !ruby/object:Gem::Version 
+  segments: 
+  - 0
+  - 2
+  - 9
   version: 0.2.9
 platform: ruby
 authors: 
@@ -9,19 +13,24 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-09-12 00:00:00 -04:00
+date: 2009-09-12 06:00:00 +02:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
   name: hoe
-  type: :development
-  version_requirement: 
-  version_requirements: !ruby/object:Gem::Requirement 
+  requirement: &id001 !ruby/object:Gem::Requirement 
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
+        segments: 
+        - 2
+        - 3
+        - 2
         version: 2.3.2
     version: 
+  type: :development
+  version_requirement: 
+  version_requirements: *id001
 description: Allows custom language loaders for specified file extensions to be hooked into require
 email: cjheath@rubyforge.org
 executables: []
@@ -57,18 +66,22 @@ required_ruby_version: !ruby/object:Gem::Requirement
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      segments: 
+      - 0
       version: "0"
   version: 
 required_rubygems_version: !ruby/object:Gem::Requirement 
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      segments: 
+      - 0
       version: "0"
   version: 
 requirements: []
 
 rubyforge_project: polyglot
-rubygems_version: 1.3.5
+rubygems_version: 1.3.6
 signing_key: 
 specification_version: 3
 summary: Allows custom language loaders for specified file extensions to be hooked into require

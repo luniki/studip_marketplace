@@ -1,6 +1,10 @@
 --- !ruby/object:Gem::Specification 
 name: webrat
 version: !ruby/object:Gem::Version 
+  segments: 
+  - 0
+  - 6
+  - 0
   version: 0.6.0
 platform: ruby
 authors: 
@@ -9,29 +13,38 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-11-28 00:00:00 -05:00
+date: 2009-11-28 06:00:00 +01:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
   name: nokogiri
-  type: :runtime
-  version_requirement: 
-  version_requirements: !ruby/object:Gem::Requirement 
+  requirement: &id001 !ruby/object:Gem::Requirement 
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
+        segments: 
+        - 1
+        - 2
+        - 0
         version: 1.2.0
     version: 
-- !ruby/object:Gem::Dependency 
-  name: rack
   type: :runtime
   version_requirement: 
-  version_requirements: !ruby/object:Gem::Requirement 
+  version_requirements: *id001
+- !ruby/object:Gem::Dependency 
+  name: rack
+  requirement: &id002 !ruby/object:Gem::Requirement 
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
+        segments: 
+        - 1
+        - 0
         version: "1.0"
     version: 
+  type: :runtime
+  version_requirement: 
+  version_requirements: *id002
 description: |-
   Webrat lets you quickly write expressive and robust acceptance tests
   for a Ruby web application. It supports simulating a browser inside
@@ -276,18 +289,22 @@ required_ruby_version: !ruby/object:Gem::Requirement
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      segments: 
+      - 0
       version: "0"
   version: 
 required_rubygems_version: !ruby/object:Gem::Requirement 
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      segments: 
+      - 0
       version: "0"
   version: 
 requirements: []
 
 rubyforge_project: webrat
-rubygems_version: 1.3.5
+rubygems_version: 1.3.6
 signing_key: 
 specification_version: 3
 summary: Ruby Acceptance Testing for Web applications
