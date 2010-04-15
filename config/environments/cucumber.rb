@@ -21,40 +21,9 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
+config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
+config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
+config.gem 'webrat',           :lib => false, :version => '>=0.7.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
+config.gem 'rspec',            :lib => false, :version => '>=1.3.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
+config.gem 'rspec-rails',      :lib => false, :version => '>=1.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
 
-config.gem 'factory_girl', 
-           :version => '>= 1.2.3'
-
-# Cucumber and dependencies
-config.gem 'polyglot',
-           :version => '0.2.9',
-           :lib     => false
-config.gem 'treetop',
-           :version => '1.4.3',
-           :lib     => false
-config.gem 'term-ansicolor',
-           :version => '1.0.4',
-           :lib     => false
-config.gem 'diff-lcs',
-           :version => '1.1.2',
-           :lib     => false
-config.gem 'builder',
-           :version => '2.1.2',
-           :lib     => false
-config.gem 'cucumber',
-           :version => '>= 0.5.3'
-config.gem 'cucumber-rails',
-           :version => '>= 0.2.2',
-           :lib => false
-config.gem 'database_cleaner',
-           :version => '>= 0.2.3'
-
-# Webrat and dependencies
-# NOTE: don't vendor nokogiri - it's a binary Gem
-config.gem 'nokogiri',
-           :version => '>= 1.4.0',
-           :lib     => false
-config.gem 'webrat',
-           :version => '0.6.0'
-
-HOST = 'localhost'
