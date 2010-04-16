@@ -21,10 +21,9 @@ config.action_controller.allow_forgery_protection    = false
 # The :test delivery method accumulates sent emails in the
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
-
-config.gem 'factory_girl', 
+config.gem 'factory_girl',
            :version => '>= 1.2.3'
-config.gem 'shoulda', 
+config.gem 'shoulda',
            :version => '>= 2.10.2'
 config.gem 'timecop',
            :version => '>= 0.3.4'
@@ -40,12 +39,10 @@ config.gem 'webrat',
            :version => '0.6.0'
 
 # At the bottom due to a loading bug in Rails
-config.gem 'jferris-mocha', 
+config.gem 'jferris-mocha',
            :version => '0.9.7.20090911190113',
-           :source  => 'http://gems.github.com', 
+           :source  => 'http://gems.github.com',
            :lib     => 'mocha'
-
-HOST = 'localhost'
 
 require 'factory_girl'
 begin require 'redgreen'; rescue LoadError; end
@@ -54,4 +51,6 @@ config.after_initialize do
   Timecop.travel(Time.now)
 end
 
-  config.gem 'rspec-rails', :version => '>= 1.3.2', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
+config.gem 'rspec-rails', :version => '>= 1.3.2', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
+
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
