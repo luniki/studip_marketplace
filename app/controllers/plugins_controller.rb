@@ -51,7 +51,7 @@ class PluginsController < ApplicationController
         format.html { redirect_to(@plugin) }
         format.xml  { render :xml => @plugin, :status => :created, :location => @plugin }
       else
-        flash[:error] = "Plugin could not be created. #{@plugin.errors.length}"
+        flash[:error] = "Plugin could not be created."
         format.html { render :action => "new" }
         format.xml  { render :xml => @plugin.errors, :status => :unprocessable_entity }
       end

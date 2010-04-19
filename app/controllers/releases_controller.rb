@@ -41,6 +41,7 @@ class ReleasesController < ApplicationController
         format.html { redirect_to(@release) }
         format.xml  { render :xml => @release, :status => :created, :location => @release }
       else
+        flash[:error] = 'Release could not be created.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @release.errors, :status => :unprocessable_entity }
       end

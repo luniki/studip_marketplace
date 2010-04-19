@@ -31,6 +31,12 @@ class Release < ActiveRecord::Base
   validates_uniqueness_of :version, :scope => :plugin_id
   validates_format_of :studipMinVersion, :studipMaxVersion, :with => VERSION, :allow_blank => true
 
+  validate do |release|
+    if release.plugin && release.manifest.pluginclassname != release.plugin.name
+      release.errors.add_to_base("Must be friends to leave a comment")
+    end
+  end
+
   def manifest
     unless @manifest || new_record? then
       @manifest = Manifest.new File.read(package.path(:manifest))
