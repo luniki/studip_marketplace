@@ -1,5 +1,8 @@
 development:
   allow_star: true
+  port: 3313
 
 production:
   allow_star: true
+  port: 3313
+
