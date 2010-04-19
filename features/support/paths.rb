@@ -18,6 +18,9 @@ module NavigationHelpers
     when /the plugins page/i
       plugins_path
 
+    when /the plugin page/i
+      plugin_path @plugin
+
     when /the new release page/i
       new_plugin_release_path @plugin
 
