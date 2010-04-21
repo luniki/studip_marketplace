@@ -9,10 +9,10 @@
         <%= render :partial => "download_latest", :locals => { :plugin => plugin } %>
 
         <ul>
-        <% permitted_to? :update, :plugins do %>
+        <% permitted_to? :update, plugin do %>
             <li><%= link_to 'Edit', edit_plugin_path(plugin) %></li>
         <% end %>
-        <% permitted_to? :delete, :plugins do %>
+        <% permitted_to? :delete, plugin do %>
             <li><%= link_to 'Destroy', plugin, :confirm => 'Are you sure?', :method => :delete %></li>
         <% end %>
         </ul>
