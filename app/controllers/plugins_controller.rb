@@ -9,7 +9,8 @@ class PluginsController < ApplicationController
       @plugins = Plugin.search params[:q], :star => true,
                                             :page => (params[:page] || 1)
     else
-      @plugins = Plugin.paginate :page => (params[:page] || 1)
+      @plugins = Plugin.paginate :page => (params[:page] || 1),
+                                  :order => 'name ASC'
     end
 
     respond_to do |format|
