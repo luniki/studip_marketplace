@@ -21,6 +21,7 @@ class Plugin < ActiveRecord::Base
   define_index do
     indexes :name, :description
     set_property :delta => true
+    set_property :field_weights => {:name => 20, :description => 10}
   end
 
   # TODO (mlunzena) how can I make sure, that a plugin belongs to a user?
