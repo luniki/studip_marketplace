@@ -25,7 +25,7 @@
 
             <% if plugin.homepage.present? %>
                 <dt>Homepage</dt>
-                <dd><%=link_to plugin.homepage %></dd>
+                <dd><%=link_to h(plugin.homepage), plugin.homepage %></dd>
             <% end %>
         </dl>
         <p><%=h truncate(plugin.description, :length => 85) %></p>
