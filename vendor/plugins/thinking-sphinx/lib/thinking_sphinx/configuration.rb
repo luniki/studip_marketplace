@@ -275,7 +275,7 @@ module ThinkingSphinx
 
       if self.allow_star
         self.index_options[:enable_star]    = true
-        self.index_options[:min_prefix_len] = 1 unless self.index_options[:min_prefix_len]
+        self.index_options[:min_prefix_len] = 1
       end
     end
 
