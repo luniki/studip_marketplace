@@ -1,8 +1,11 @@
 class Plugin < ActiveRecord::Base
 
   belongs_to :user # TODO should be called owner instead
+
   has_many :releases, :order => "created_at DESC"
   has_one :last_release, :class_name => "Release", :order => "created_at DESC"
+
+  belongs_to :category
 
   has_attached_file :screenshot,
                     :styles => {
@@ -12,7 +15,7 @@ class Plugin < ActiveRecord::Base
                     :url  => "/paperclip/:attachment/:id_:style.:extension",
                     :path => ":rails_root/public/paperclip/:attachment/:id_:style.:extension"
 
-  attr_accessible :name, :description, :homepage, :screenshot
+  attr_accessible :name, :description, :homepage, :screenshot, :category_id
   attr_readonly :name
 
   validates_uniqueness_of :name
