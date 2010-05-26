@@ -1,11 +1,12 @@
-<h1>Listing plugins</h1>
-
-<% unless params[:q].blank? -%>
+<% if @plugins.is_a? ThinkingSphinx::Search -%>
+<h1>Found plugins</h1>
 <h2>
   <span id="search_count"><%= @plugins.total_entries %></span>
   <%= t(:search_results_for) %>
   "<span id="search_term"><%= h(params[:q]) %></span>"
 </h2>
+<% else %>
+<h1>Listing plugins</h1>
 <% end %>
 
 <%= will_paginate @plugins %>

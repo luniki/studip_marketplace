@@ -5,10 +5,11 @@ class PluginsController < ApplicationController
   # GET /plugins
   # GET /plugins.xml
   def index
-    if params[:q].present?
+    if params[:q].present? && params[:q].length >= 3
       @plugins = Plugin.search params[:q], :star => true,
-                                            :page => (params[:page] || 1)
+                                           :page => (params[:page] || 1)
     else
+      flash[:notice] = "Zu kurzer Suchbegriff" if params[:q].present?
       @plugins = Plugin.paginate :page => (params[:page] || 1),
                                   :order => 'name ASC'
     end
