@@ -9,12 +9,15 @@
   <tr>
     <td><%=h category.name %></td>
     <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_category_path(category)  if permitted_to? :update, :categories %></td>
+    <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete  if permitted_to? :delete, :categories %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New category', new_category_path %>
+<% permitted_to? :create, :categories do %>
+  <%= link_to 'New category', new_category_path %>
+<% end %>
+

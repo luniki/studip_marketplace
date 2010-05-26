@@ -23,6 +23,11 @@
             <dt>Author</dt>
             <dd><%=mail_to plugin.user.email %></dd>
 
+            <% if plugin.category.present? %>
+                <dt><%= t :Category %></dt>
+                <dd><%= link_to h(plugin.category.name), plugin.category %></dd>
+            <% end %>
+
             <% if plugin.homepage.present? %>
                 <dt>Homepage</dt>
                 <dd><%=link_to h(plugin.homepage), plugin.homepage %></dd>

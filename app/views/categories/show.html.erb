@@ -3,6 +3,14 @@
   <%=h @category.name %>
 </p>
 
+<ul class="plugins">
+  <% @category.plugins.each do |plugin| %>
+    <li><%= link_to h(plugin.name), plugin %></li>
+  <% end %>
+</ul>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+
+<% permitted_to? :update, :categories do %>
+  <%= link_to 'Edit', edit_category_path(@category) %> |
+<% end %>
+<%= link_to 'Index of Categories', categories_path %>

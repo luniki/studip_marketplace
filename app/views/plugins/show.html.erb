@@ -1,6 +1,9 @@
 <div class="plugin-info">
   <h2><%=h @plugin.name %></h2>
   <span class="author"><%= t :by %> <%= h @plugin.user.email %></span>
+  <% if @plugin.category.present? %>
+    <span class="category"><%= t :Category %>: <%= link_to h(@plugin.category.name), @plugin.category %></span>
+  <% end %>
 
   <%= image_tag @plugin.screenshot.url(:thumb), :class => "screenshot"  if @plugin.screenshot.file? %>
 
