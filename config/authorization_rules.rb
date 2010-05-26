@@ -2,6 +2,7 @@ authorization do
   role :guest do
     has_permission_on :plugins, :to => :read
     has_permission_on :releases, :to => :read
+    has_permission_on :categories, :to => :read
   end
 
   role :author do
@@ -16,6 +17,8 @@ authorization do
     has_permission_on :releases, :to => [:create, :delete] do
       if_permitted_to :update, :plugin
     end
+
+    has_permission_on :categories, :to => :manage
 
   end
 end
